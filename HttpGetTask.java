@@ -13,7 +13,7 @@ import java.net.URL;
 
 
 public class HttpGetTask extends AsyncTask<Integer,Void,Void> {
-    private final String DEFAULTURL="http://192.168.11.57/~pi/magnumsaber.php?";
+    private final String DEFAULTURL="http://*.*.*.*/~pi/magnumsaber.php?";
 
     private Activity mParentActivity;
     private ProgressDialog mDialog = null;
