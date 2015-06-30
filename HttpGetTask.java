@@ -1,5 +1,8 @@
-package com.example.kakizaki.recgnizeled;
+package com.example.kenichiro.letsandgo;
 
+/**
+ * Created by kenichiro on 2015/06/23.
+ */
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -9,13 +12,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-
-
-/**
- * Created by Kakizaki on 2015/06/09.
- */
 public class HttpGetTask extends AsyncTask<Integer,Void,Void> {
-    private final String DEFAULTURL="http://192.168.11.44/~pi/ledtest.php?";
+    private final String DEFAULTURL="http://192.168.11.57/~pi/magnumsaber.php?";
 
     private Activity mParentActivity;
     private ProgressDialog mDialog = null;
@@ -27,7 +25,7 @@ public class HttpGetTask extends AsyncTask<Integer,Void,Void> {
     @Override
     protected void onPreExecute(){
         mDialog = new ProgressDialog(mParentActivity);
-        mDialog.setMessage("通信中。。。");
+        mDialog.setMessage("通信中");
         mDialog.show();
     }
 

@@ -1,4 +1,4 @@
-package com.example.kakizaki.recgnizeled;
+package com.example.kenichiro.letsandgo;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -26,7 +26,7 @@ public class MainActivity extends ActionBarActivity {
 
 
         Button button = (Button) findViewById(R.id.button);
-       //ToggleButton toggleButton1 = (ToggleButton)findViewById(R.id.toggle_button_1);
+        //ToggleButton toggleButton1 = (ToggleButton)findViewById(R.id.toggle_button_1);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,32 +53,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // 自分が投げたインテントであれば応答する
-        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
-            String resultsString = "";
-
-            // 結果文字列リスト
-            ArrayList<String> results = data.getStringArrayListExtra(
-                    RecognizerIntent.EXTRA_RESULTS);
-
-            resultsString += results.get(0);
-
-            HttpGetTask task = new HttpGetTask(this);
-            if(resultsString.equals("走れ")){
-               // Toast.makeText(this, resultsString, Toast.LENGTH_LONG).show();
-                task.execute(0,1);
-
-            }
-            else if(resultsString.equals("止まれ")){
-                task.execute(0,0);
-            }
-            // トーストを使って認識文字を表示
-            Toast.makeText(this, resultsString, Toast.LENGTH_LONG).show();
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
 
 
     @Override
@@ -101,5 +75,39 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // 自分が投げたインテントであれば応答する
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            String resultsString = "";
+
+            // 結果文字列リスト
+            ArrayList<String> results = data.getStringArrayListExtra(
+                    RecognizerIntent.EXTRA_RESULTS);
+
+            resultsString += results.get(0);
+
+            boolean flag = true;//フラグを定義
+
+            HttpGetTask task = new HttpGetTask(this);
+            if(resultsString.equals("走れ")){
+                // Toast.makeText(this, resultsString, Toast.LENGTH_LONG).show();
+                task.execute(1,1);
+
+            }
+            else if(resultsString.equals("止まれ")){
+                task.execute(0,0);
+
+            }
+            else if(resultsString.equals("戻れ")){
+                task.execute(0,1);
+
+            }
+            // トーストを使って認識文字を表示
+            Toast.makeText(this, resultsString, Toast.LENGTH_LONG).show();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
