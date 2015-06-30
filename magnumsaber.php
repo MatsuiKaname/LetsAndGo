@@ -2,9 +2,9 @@
   ini_set('display_errors', 1);
   error_reporting(E_ALL);
   define("MAGNUMSABER", "sudo /home/pi/magnumsaber");
-  define("ADDERSS", "192.168.11.57");
-  define("USER", "pi");
-  define("PASSWORD", "Knm7749");
+  define("ADDERSS", "");
+  define("USER", "");
+  define("PASSWORD", "");
 
   if(!is_null($_GET["num"]) && !is_null($_GET["stat"])){
     //echo "ffff";
